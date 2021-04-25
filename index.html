@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Tính Tiền Tip</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+    <link rel="stylesheet" href="./css/main.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <h3>Tính tiền tip</h3>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="">Tổng tiền thanh toán?</label>
+              <input id="txtTongTien" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+              <div class="form-group">
+                <label for="">Báº¡n muá»‘n tĂ­p bao nhiĂªu</label>
+                <select class="form-control" id="slPhanTramTip">
+                  <option value="0">Chá»n Ä‘á»ƒ tiáº¿p</option>
+                  <option value="30">30%</option>
+                  <option value="20">20%</option>
+                  <option value="15">15%</option>
+                  <option value="10">10%</option>
+                  <option value="5">5%</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="">Muá»‘n share bao nhiĂªu ngÆ°á»i</label>
+              <input id="txtSoNguoi" type="text" class="form-control" />
+            </div>
+            <button id="btnTinhTienTip" class="btn btn-danger">TĂ­nh tiá»n</button>
+          </div>
+          <div id="txtThongBaoTienTip" style="display: none">ThĂ´ng bĂ¡o tiá»n tĂ­p</div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!-- Main Js -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>
