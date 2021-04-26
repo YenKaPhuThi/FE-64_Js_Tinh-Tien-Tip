@@ -18,7 +18,7 @@ function handlePaymentCaculation() {
     // Check input's value is number
     if (isNaN(paymentAmountVal) || isNaN(numberSharingVal)) {
       tippingNoticed.innerHTML =
-        '<p class="alert-warning">' + "Vui lòng nhập số!" + "</p>";
+        '<p class="text-notice">' + "Vui lòng nhập số!" + "</p>";
     } else {
       paymentAmount = parseInt(paymentAmountVal) || 0;
       numberSharing = parseInt(numberSharingVal) || 0;

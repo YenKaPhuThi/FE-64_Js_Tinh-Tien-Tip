@@ -1,3 +1,51 @@
+// Begin General
+p {
+  margin-bottom: 0;
+}
+
+.btn {
+  min-width: 14rem;
+}
+
 .fw-500 {
   font-weight: 500;
 }
+
+.mh-100-vh {
+  min-height: 100vh;
+}
+
+.text-notice {
+  color: #dc3545;
+}
+// End General
+
+// Begin Wrapper
+.wrapper {
+  background-color: #571206;
+}
+// End Wrapper
+
+// Begin Card
+.card {
+  border-radius: 1.4rem;
+  border: 0;
+
+  .card-header {
+    background-color: #1d030f;
+
+    &:first-child {
+      border-radius: calc(1.4rem - 1px) calc(1.4rem - 1px) 0 0;
+    }
+  }
+
+  .card-body {
+    padding: 1rem 2rem;
+  }
+
+  .card-footer {
+    background-color: transparent;
+    border-top: 0;
+  }
+}
+// End Card
