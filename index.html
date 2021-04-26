@@ -27,7 +27,7 @@
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h3>Tính tiền tip</h3>
+                <h3 class="text-uppercase text-center">Tính tiền tip</h3>
                 <form action="#">
                   <div class="form-group">
                     <label for="paymentAmount">Tổng tiền thanh toán?</label>
@@ -35,6 +35,7 @@
                       type="text"
                       id="paymentAmount"
                       class="form-control"
+                      placeholder="Tổng tiền"
                       required
                     />
                   </div>
@@ -59,21 +60,21 @@
                       type="text"
                       id="numberSharing"
                       class="form-control"
+                      placeholder="Nhập số người"
                     />
                   </div>
-                  <div class="form-group text-center">
-                    <button
+                  <button
                       type="submit"
-                      id="btnPaymentCaculate"
+                      id="btnPayment"
                       class="btn btn-danger text-uppercase"
                     >
                       Tính nào!
                     </button>
-                  </div>
-                  <div class="form-group text-center">
-                    <div id="tippingNoticed" style="display: none"></div>
-                  </div>
                 </form>
+              </div>
+              <div class="card-footer text-center">
+                <p class="fw-500 text-uppercase">Khoản Số Tiền Tip</p>
+                <div id="tippingNoticed" class="fw-500" style="display: none"></div>
               </div>
             </div>
           </div>
