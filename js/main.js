@@ -1,32 +1,35 @@
 // Define Global Variables
+var infoNotice     = document.getElementById("infoNotice");
 var btnPayment     = document.getElementById("btnPayment");
 var paymentAmount  = document.getElementById("paymentAmount");
 var numberSharing  = document.getElementById("numberSharing");
 var tippingOptions = document.getElementById("tippingOptions");
-var tippingNoticed = document.getElementById("tippingNoticed");
 
 // Handle Payment Caculation
 function handlePaymentCaculation() {
-  btnPayment.addEventListener("click", function (e) {
-    e.preventDefault();
-
+  btnPayment.addEventListener("click", function() {
     var paymentAmountVal  = paymentAmount.value;
     var numberSharingVal  = numberSharing.value;
-    var optionSelected    = tippingOptions.options[tippingOptions.selectedIndex].value;
+    var tippingOptionsVal = tippingOptions.options[tippingOptions.selectedIndex].value;
     var paymentCaculation = 0;
+
+    // Check Payment Amount is empty => don't do anything
+    // - This field is required
+    if (paymentAmountVal.length == 0) {
+      return null;
+    }
 
     // Check input's value is number
     if (isNaN(paymentAmountVal) || isNaN(numberSharingVal)) {
-      tippingNoticed.innerHTML =
-        '<p class="text-notice">' + "Vui lòng nhập số!" + "</p>";
+      infoNotice.innerHTML = '<p class="text-notice">' + "Vui lòng nhập số!" + "</p>";
     } else {
-      paymentAmount = parseInt(paymentAmountVal) || 0;
-      numberSharing = parseInt(numberSharingVal) || 0;
+      numberSharing  = 0;
+      paymentAmount  = parseFloat(paymentAmountVal);
+      tippingOptions = parseFloat(tippingOptionsVal);
+      numberSharing  = !numberSharingVal.length ? 0 : parseFloat(numberSharingVal);
 
-      paymentCaculation = ((paymentAmount * optionSelected) / 100) / numberSharing;
-
-      tippingNoticed.style.display = "block";
-      tippingNoticed.innerHTML = "<p><sup>$</sup>" + paymentCaculation + "<br />mỗi người</p>";
+      paymentCaculation = ((paymentAmount * tippingOptions) / 100) / numberSharing;
+      infoNotice.innerHTML = "<p><sup>$</sup>" + '<span class="fs-20">' + paymentCaculation + "</span>" + "<br/>mỗi người</p>";
     }
   });
 }
