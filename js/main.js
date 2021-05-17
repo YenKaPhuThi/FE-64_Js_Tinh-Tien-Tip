@@ -43,52 +43,38 @@ function checkNumberValue(fieldEle, errorEle, indexMsg) {
   }
 }
 
-// Handle Payment Caculation
 function handlePayment() {
-  getMyEleId("btnPayment").addEventListener("click", function () {
-    var infoNotice = getMyEleId("infoNotice");
-    var paymentAmount = getMyEleId("paymentAmount");
-    var numberSharing = getMyEleId("numberSharing");
-    var tipOptions = getMyEleId("tipOptions");
+  var paymentAmount = getMyEleId("paymentAmount").value;
+  var numberSharing = getMyEleId("numberSharing").value;
+  var resultInfo = getMyEleId("resultInfo");
+  var tipOptions = getMyEleId("tipOptions");
+  var optionSelected = tipOptions.options[tipOptions?.selectedIndex].value;
 
-    var paymentAmountVal = paymentAmount.value;
-    var numberSharingVal = numberSharing.value;
-    var tipOptionsVal = tipOptions.options[tipOptions?.selectedIndex].value;
-    var paymentCaculation = 0;
+  if (paymentAmount === "" && numberSharing == "" && optionSelected == 0) {
+    return;
+  } else {
+    paymentAmount = parseInt(paymentAmount);
+    tipOptions = parseInt(optionSelected);
+    numberSharing = numberSharing.length ? parseInt(numberSharing) : 1;
 
-    // Check input's value is empty => show error message
-    checkEmptyValue("paymentAmount", "errorAmount", 0);
-    checkEmptyValue("tipOptions", "errorTip", 1);
-    checkEmptyValue("numberSharing", "errorSharing", 2);
+    var cost = 0;
+    cost = (paymentAmount * tipOptions) / 100 / numberSharing;
 
-    // Check input's value is not number => show error message
-    checkNumberValue("paymentAmount", "errorAmount", 0);
-    checkNumberValue("numberSharing", "errorSharing", 0);
-
-    // Check Payment Amount is empty => don't do anything
-    // - This field is required
-    if (paymentAmountVal.length == 0) {
-      return null;
-    }
-
-    // Check input's value is number
-    if (isNaN(paymentAmountVal) || isNaN(numberSharingVal)) {
-      infoNotice.innerHTML =
-        '<p class="text-notice">' + "Vui lòng nhập số!" + "</p>";
-    } else {
-      paymentAmount = parseInt(paymentAmountVal);
-      tipOptions = parseInt(tipOptionsVal);
-      numberSharing = numberSharingVal.length ? parseInt(numberSharingVal) : 1;
-
-      paymentCaculation = (paymentAmount * tipOptions) / 100 / numberSharing;
-      infoNotice.innerHTML =
-        "<p><sup>$</sup>" +
-        '<span class="fs-20">' +
-        paymentCaculation +
-        "</span>" +
-        "<br/>mỗi người</p>";
-    }
-  });
+    resultInfo.innerHTML = `<p><sup>$</sup><span class="fs-20">${cost}</span><br/>mỗi người</p>`;
+  }
 }
 
-handlePayment();
+// Click button to calculate payment
+getMyEleId("btnPayment").addEventListener("click", function () {
+  // Check input's value is empty => show error message
+  checkEmptyValue("paymentAmount", "errorAmount", 0);
+  checkEmptyValue("tipOptions", "errorTip", 1);
+  checkEmptyValue("numberSharing", "errorSharing", 2);
+
+  // Check input's value is not number => show error message
+  checkNumberValue("paymentAmount", "errorAmount", 0);
+  checkNumberValue("numberSharing", "errorSharing", 0);
+
+  //Init handle payment
+  handlePayment();
+});
