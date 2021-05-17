@@ -52,10 +52,10 @@ function handlePayment() {
 
   if (paymentAmount === "" && numberSharing == "" && optionSelected == 0) {
     return;
-  } else {
+  } else if (!isNaN(paymentAmount) && !isNaN(numberSharing)) {
     paymentAmount = parseInt(paymentAmount);
     tipOptions = parseInt(optionSelected);
-    numberSharing = numberSharing.length ? parseInt(numberSharing) : 1;
+    numberSharing = numberSharing == 0 ? 1 : parseInt(numberSharing);
 
     var cost = 0;
     cost = (paymentAmount * tipOptions) / 100 / numberSharing;
@@ -73,7 +73,7 @@ getMyEleId("btnPayment").addEventListener("click", function () {
 
   // Check input's value is not number => show error message
   checkNumberValue("paymentAmount", "errorAmount", 0);
-  checkNumberValue("numberSharing", "errorSharing", 0);
+  checkNumberValue("numberSharing", "errorSharing", 1);
 
   //Init handle payment
   handlePayment();
