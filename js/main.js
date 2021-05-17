@@ -10,15 +10,36 @@ var errorEmptyMsg = [
   "Nhập số người không được bỏ trống!",
 ];
 
+// Define error number messages
+var errorNumberMsg = ["Tổng tiền phải là số!", "Nhập số người phải là số!"];
+
 // Handle check input's value is empty and select index is 0
 function checkEmptyValue(fieldEle, errorEle, indexMsg) {
   var fieldEle = getMyEleId(fieldEle);
   var errorEle = getMyEleId(errorEle);
 
   errorEle.style.display = "none";
+
   if (fieldEle.value === "" || fieldEle.selectedIndex == 0) {
     errorEle.style.display = "block";
     errorEle.textContent = errorEmptyMsg[indexMsg];
+  }
+}
+
+// Handle check input's value is number
+function checkNumberValue(fieldEle, errorEle, indexMsg) {
+  var fieldEle = getMyEleId(fieldEle);
+  var errorEle = getMyEleId(errorEle);
+
+  errorEle.style.display = "none";
+
+  if (fieldEle.value === "") {
+    errorEle.style.display = "block";
+
+    return;
+  } else if (isNaN(fieldEle.value)) {
+    errorEle.style.display = "block";
+    errorEle.textContent = errorNumberMsg[indexMsg];
   }
 }
 
@@ -39,6 +60,10 @@ function handlePayment() {
     checkEmptyValue("paymentAmount", "errorAmount", 0);
     checkEmptyValue("tipOptions", "errorTip", 1);
     checkEmptyValue("numberSharing", "errorSharing", 2);
+
+    // Check input's value is not number => show error message
+    checkNumberValue("paymentAmount", "errorAmount", 0);
+    checkNumberValue("numberSharing", "errorSharing", 0);
 
     // Check Payment Amount is empty => don't do anything
     // - This field is required
