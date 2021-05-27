@@ -1,5 +1,5 @@
 // Get element by Id
-function getMyEleId(ele) {
+function getEleById(ele) {
   return document.getElementById(ele);
 }
 
@@ -14,9 +14,9 @@ var errorEmptyMsg = [
 var errorNumberMsg = ["Tổng tiền phải là số!", "Nhập số người phải là số!"];
 
 // Handle check input's value is empty and select index is 0
-function checkEmptyValue(fieldEle, errorEle, indexMsg) {
-  var fieldEle = getMyEleId(fieldEle);
-  var errorEle = getMyEleId(errorEle);
+function checkEmpty(fieldEle, errorEle, indexMsg) {
+  var fieldEle = getEleById(fieldEle);
+  var errorEle = getEleById(errorEle);
 
   errorEle.style.display = "none";
 
@@ -27,9 +27,9 @@ function checkEmptyValue(fieldEle, errorEle, indexMsg) {
 }
 
 // Handle check input's value is number
-function checkNumberValue(fieldEle, errorEle, indexMsg) {
-  var fieldEle = getMyEleId(fieldEle);
-  var errorEle = getMyEleId(errorEle);
+function checkNumber(fieldEle, errorEle, indexMsg) {
+  var fieldEle = getEleById(fieldEle);
+  var errorEle = getEleById(errorEle);
 
   errorEle.style.display = "none";
 
@@ -44,10 +44,10 @@ function checkNumberValue(fieldEle, errorEle, indexMsg) {
 }
 
 function handlePayment() {
-  var paymentAmount = getMyEleId("paymentAmount").value;
-  var numberSharing = getMyEleId("numberSharing").value;
-  var resultInfo = getMyEleId("resultInfo");
-  var tipOptions = getMyEleId("tipOptions");
+  var paymentAmount = getEleById("paymentAmount").value;
+  var numberSharing = getEleById("numberSharing").value;
+  var resultInfo = getEleById("resultInfo");
+  var tipOptions = getEleById("tipOptions");
   var optionSelected = tipOptions.options[tipOptions?.selectedIndex].value;
 
   if (paymentAmount === "" && numberSharing == "" && optionSelected == 0) {
@@ -65,15 +65,15 @@ function handlePayment() {
 }
 
 // Click button to calculate payment
-getMyEleId("btnPayment").addEventListener("click", function () {
+getEleById("btnPayment").addEventListener("click", function () {
   // Check input's value is empty => show error message
-  checkEmptyValue("paymentAmount", "errorAmount", 0);
-  checkEmptyValue("tipOptions", "errorTip", 1);
-  checkEmptyValue("numberSharing", "errorSharing", 2);
+  checkEmpty("paymentAmount", "errorAmount", 0);
+  checkEmpty("tipOptions", "errorTip", 1);
+  checkEmpty("numberSharing", "errorSharing", 2);
 
   // Check input's value is not number => show error message
-  checkNumberValue("paymentAmount", "errorAmount", 0);
-  checkNumberValue("numberSharing", "errorSharing", 1);
+  checkNumber("paymentAmount", "errorAmount", 0);
+  checkNumber("numberSharing", "errorSharing", 1);
 
   //Init handle payment
   handlePayment();
